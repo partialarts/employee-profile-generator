@@ -1,0 +1,29 @@
+{
+  "name": "employee-profile-generator",
+  "version": "1.0.0",
+  "description": "Input employee information to generate an HTML webpage displaying a summary for each person",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/partialarts/employee-profile-generator.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/partialarts/employee-profile-generator/issues"
+  },
+  "homepage": "https://github.com/partialarts/employee-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  },
+"devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
