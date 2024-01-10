@@ -224,3 +224,14 @@ const employeeQuestions = () => {
             }
         });
 }
+
+const generateHTML = (content) => {
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    else fs.writeFileSync(outputPath, render(content), 'utf-8');
+    console.log(`Team profile generated: ${outputPath}`);
+};
+
+// Starts the application
+managerQuestions()
