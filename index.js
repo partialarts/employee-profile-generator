@@ -84,3 +84,143 @@ const managerQuestions = () => {
         });
 
 };
+
+const employeeQuestions = () => {
+    console.log(`Add an employee to the team`);
+    return inquirer.prompt([
+        {
+            type: 'list',
+            name: 'role',
+            message: "What is the employee's role?",
+            choices: ["Engineer", "Intern", "Finish building the team"],
+        },
+    ])
+        .then((emp) => {
+            if (emp.role === "Engineer") {
+                return inquirer.prompt([
+                    {
+                        type: "input",
+                        name: "name",
+                        message: "What is the engineer's name?",
+                        validate(input) {
+                            if (input) {
+                                return true;
+                            } else {
+                                console.log("Please enter the engineer's name");
+                                return false;
+                            }
+                        }
+                    },
+                    {
+                        type: "number",
+                        name: "id",
+                        message: "What is the engineer's ID number?",
+                        validate(input) {
+                            if (isNaN(input)) {
+                                console.log("Please enter a valid number");
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
+                    },
+                    {
+                        type: "input",
+                        name: "email",
+                        message: "What is the engineer's email address?",
+                        validate(input) {
+                            const emailPass = input.toLowerCase()
+                            if (emailPass.includes("@") === true) {
+                                return true;
+                            } else {
+                                console.log("Please enter a valid email address");
+                                return false;
+                            }
+                        }
+                    },
+                    {
+                        type: "input",
+                        name: "github",
+                        message: "What is the engineer's GitHub username?",
+                        validate(input) {
+                            if (input) {
+                                return true;
+                            } else {
+                                console.log("Please enter the engineer's GitHub username");
+                                return false;
+                            }
+                        }
+                    },
+                ])
+                    .then((eng) => {
+                        const engineer = new Engineer(eng.name, eng.id, eng.email, eng.github);
+                        employees.push(engineer);
+                        employeeQuestions();
+                    });
+            } else if (emp.role === "Intern") {
+                return inquirer.prompt([
+                    {
+                        type: "input",
+                        name: "name",
+                        message: "What is the intern's name?",
+                        validate(input) {
+                            if (input) {
+                                return true;
+                            } else {
+                                console.log("Please enter the intern's name");
+                                return false;
+                            }
+                        },
+                    },
+                    {
+                        type: "number",
+                        name: "id",
+                        message: "What is the intern's ID number?",
+                        validate(input) {
+                            if (isNaN(input)) {
+                                console.log("Please enter a valid number");
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        },
+                    },
+                    {
+                        type: "input",
+                        name: "email",
+                        message: "What is the intern's email address?",
+                        validate(input) {
+                            const emailPass = input.toLowerCase()
+                            if (emailPass.includes("@") === true) {
+                                return true;
+                            } else {
+                                console.log("Please enter a valid email address");
+                                return false;
+                            }
+                        }
+                    },
+                    {
+                        type: "input",
+                        name: "school",
+                        message: "What is the intern's school?",
+                        validate(input) {
+                            if (input) {
+                                return true;
+                            } else {
+                                console.log("Please enter the intern's school");
+                                return false;
+                            }
+                        }
+                    },
+                ])
+                    .then((int) => {
+                        const intern = new Intern(int.name, int.id, int.email, int.school);
+                        employees.push(intern);
+                        employeeQuestions();
+                    });
+            } else {
+                // When user selects "Done", run generateHTML function
+                generateHTML(employees);
+            }
+        });
+}
