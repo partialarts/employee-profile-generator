@@ -2,7 +2,7 @@
 
 ## Description
 
-The purpose of this project was to build a command line application that dynamically generates a team webpage using a series of prompts using the Inquirer package.
+The purpose of this project was to build a command line application that dynamically generates a team profile webpage using a series of prompts using the Inquirer package.
 
 The application starts with adding a Manager, and then Engineers and Interns can also be added. A card will be generated for each team member, and team members can continue to be added until complete.
 
