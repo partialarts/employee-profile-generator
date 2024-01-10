@@ -29,7 +29,7 @@ const managerQuestions = () => {
                     if (input) {
                         return true;
                     } else {
-                        console.log("Please enter the manager's name");
+                        console.log("\n Please enter the manager's name");
                         return false;
                     }
                 },
@@ -40,7 +40,7 @@ const managerQuestions = () => {
                 message: "What is the manager's ID?",
                 validate(input) {
                     if (isNaN(input)) {
-                        console.log("Please enter a valid number");
+                        console.log("\n Please enter a valid number");
                         return false;
                     } else {
                         return true;
@@ -56,7 +56,7 @@ const managerQuestions = () => {
                     if (emailPass.includes("@") === true) {
                         return true;
                     } else {
-                        console.log("Please enter a valid email address");
+                        console.log("\n Please enter a valid email address");
                         return false;
                     }
                 }
@@ -67,7 +67,7 @@ const managerQuestions = () => {
                 message: "What is the manager's office number?",
                 validate(input) {
                     if (isNaN(input)) {
-                        console.log("Please enter a valid number");
+                        console.log("\n Please enter a valid number");
                         return false;
                     } else {
                         return true;
@@ -106,7 +106,7 @@ const employeeQuestions = () => {
                             if (input) {
                                 return true;
                             } else {
-                                console.log("Please enter the engineer's name");
+                                console.log("\n Please enter the engineer's name");
                                 return false;
                             }
                         }
@@ -117,7 +117,7 @@ const employeeQuestions = () => {
                         message: "What is the engineer's ID number?",
                         validate(input) {
                             if (isNaN(input)) {
-                                console.log("Please enter a valid number");
+                                console.log("\n Please enter a valid number");
                                 return false;
                             } else {
                                 return true;
@@ -133,7 +133,7 @@ const employeeQuestions = () => {
                             if (emailPass.includes("@") === true) {
                                 return true;
                             } else {
-                                console.log("Please enter a valid email address");
+                                console.log("\n Please enter a valid email address");
                                 return false;
                             }
                         }
@@ -146,7 +146,7 @@ const employeeQuestions = () => {
                             if (input) {
                                 return true;
                             } else {
-                                console.log("Please enter the engineer's GitHub username");
+                                console.log("\n Please enter the engineer's GitHub username");
                                 return false;
                             }
                         }
@@ -167,7 +167,7 @@ const employeeQuestions = () => {
                             if (input) {
                                 return true;
                             } else {
-                                console.log("Please enter the intern's name");
+                                console.log("\n Please enter the intern's name");
                                 return false;
                             }
                         },
@@ -178,7 +178,7 @@ const employeeQuestions = () => {
                         message: "What is the intern's ID number?",
                         validate(input) {
                             if (isNaN(input)) {
-                                console.log("Please enter a valid number");
+                                console.log("\n Please enter a valid number");
                                 return false;
                             } else {
                                 return true;
@@ -194,7 +194,7 @@ const employeeQuestions = () => {
                             if (emailPass.includes("@") === true) {
                                 return true;
                             } else {
-                                console.log("Please enter a valid email address");
+                                console.log("\n Please enter a valid email address");
                                 return false;
                             }
                         }
@@ -207,7 +207,7 @@ const employeeQuestions = () => {
                             if (input) {
                                 return true;
                             } else {
-                                console.log("Please enter the intern's school");
+                                console.log("\n Please enter the intern's school");
                                 return false;
                             }
                         }
@@ -229,7 +229,7 @@ const generateHTML = (content) => {
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR)
     }
-    else fs.writeFileSync(outputPath, render(content), 'utf-8');
+    fs.writeFileSync(outputPath, render(content), 'utf-8');
     console.log(`Team profile generated: ${outputPath}`);
 };
 
