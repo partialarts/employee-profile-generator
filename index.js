@@ -1,4 +1,4 @@
-// Employee types
+// Employee types/classes
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -8,15 +8,17 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+// Directory and path to render output
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
+// Required output template
 const render = require("./src/page-template.js");
 
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
+// Array to store team information
 const employees = [];
 
-// Add a manager
+// Function to start the manager prompts
 const managerQuestions = () => {
     console.log(`Add a manager to the team`);
     return inquirer
@@ -76,15 +78,16 @@ const managerQuestions = () => {
             },
         ])
 
+        // Save new manager object and push to employees array. Then run employeeQuestions function
         .then((man) => {
             const manager = new Manager(man.name, man.id, man.email, man.officeNum);
             employees.push(manager);
             console.log(manager);
             employeeQuestions();
         });
-
 };
 
+// Function to start the employee prompts
 const employeeQuestions = () => {
     console.log(`Add an employee to the team`);
     return inquirer.prompt([
@@ -96,6 +99,7 @@ const employeeQuestions = () => {
         },
     ])
         .then((emp) => {
+            // Conditional to check employee type and present relevant prompts
             if (emp.role === "Engineer") {
                 return inquirer.prompt([
                     {
@@ -152,6 +156,7 @@ const employeeQuestions = () => {
                         }
                     },
                 ])
+                // Save new Engineer object and push to employees array. Then run employeeQuestions function until adding employees is complete
                     .then((eng) => {
                         const engineer = new Engineer(eng.name, eng.id, eng.email, eng.github);
                         employees.push(engineer);
@@ -213,19 +218,22 @@ const employeeQuestions = () => {
                         }
                     },
                 ])
+                // Save new Intern object and push to employees array. Then run employeeQuestions function until adding employees is complete
                     .then((int) => {
                         const intern = new Intern(int.name, int.id, int.email, int.school);
                         employees.push(intern);
                         employeeQuestions();
                     });
             } else {
-                // When user selects "Done", run generateHTML function
+                // When user selects "Finish building the team", run generateHTML function
                 generateHTML(employees);
             }
         });
 }
 
+// Function to generate team profile HTML file
 const generateHTML = (content) => {
+    // Conditional to check if output directory exists and make one if not
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR)
     }
