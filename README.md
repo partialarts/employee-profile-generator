@@ -12,6 +12,7 @@ The application starts with adding a Manager, and then Engineers and Interns can
 - [Installation](#installation)
 - [Usage](#usage)
 - [Screenshot](#screenshot)
+- [Testing](#testing)
 - [License](#license)
 
 ## Installation
